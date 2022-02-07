@@ -1,11 +1,11 @@
 import Head from "next/head";
 import React, { useEffect } from "react";
 
-const test = ({ name, id }) => {
+const Test = ({ name, id }) => {
   useEffect(() => {
     console.log("name: ", name);
     console.log("id: ", id);
-  }, [name]);
+  }, [name, id]);
 
   return (
     <>
@@ -32,5 +32,4 @@ export async function getServerSideProps(context) {
     }, // will be passed to the page component as props
   };
 }
-``;
-export default test;
+export default Test;

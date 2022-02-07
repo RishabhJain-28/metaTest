@@ -15,19 +15,22 @@ const Test = ({ name, id }) => {
         <link rel="shortcut icon" href="/images/hp_logo_1024px.png" />
       </Head>
       <h1>Hello</h1>
+      <h1>{id}</h1>
+      <h1>{name}</h1>
     </>
   );
 };
 
 export async function getServerSideProps(context) {
+  context.query;
   const res = await fetch(
     "https://random-data-api.com/api/coffee/random_coffee"
   ).then((res) => res.json());
-  // console.log("data", res.name);
+  console.log("data", `${res.blend_name}-${context.query.id}`);
 
   return {
     props: {
-      name: res.blend_name,
+      name: `${res.blend_name}-${context.query.id}`,
       id: res.id,
     }, // will be passed to the page component as props
   };
